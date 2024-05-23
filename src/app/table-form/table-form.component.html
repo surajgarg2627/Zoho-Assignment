@@ -1,0 +1,17 @@
+
+
+   <form [formGroup]="tableForm" (ngSubmit)="onSubmit()" class="form-container">
+    <div class="form-group">
+      <label>Table Name</label>
+      <input formControlName="name" class="form-control" />
+    </div>
+    <div formArrayName="columns" class="form-group">
+      <div *ngFor="let column of columns.controls; let i=index" [formGroupName]="i" class="column-group">
+        <input formControlName="name" placeholder="Column Name" class="form-control" />
+        <input formControlName="dataType" placeholder="Data Type" class="form-control" />
+      </div>
+    </div>
+    <button type="button" (click)="addColumn()" class="btn btn-secondary">Add Column</button>
+    <button type="submit" class="btn btn-primary">Create Table</button>
+  </form>
+  
